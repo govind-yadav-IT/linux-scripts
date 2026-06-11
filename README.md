@@ -19,3 +19,16 @@ Monitors disk usage across all partitions and warns when any partition exceeds 8
 
 ## Author
 Govind | BSc IT | Aspiring DevOps Engineer
+### system_health.sh
+Monitors overall system health — CPU usage, memory usage, and disk usage.
+
+**Usage:**
+```bash
+./system_health.sh
+```
+
+**Features:**
+- Checks CPU usage and warns above 80%
+- Checks memory usage and warns above 80%
+- Checks disk usage and warns above 80%
+- Generates timestamped health reports
