@@ -1,0 +1,10 @@
+#//bin/bash
+BACKUP_DIR="/tmp/backup_$(date +%Y%m%d_%H%M%S)"
+mkdir -p "$BACKUP_DIR"
+cp ~/Scripts/*.sh "$BACKUP_DIR"
+echo "=================================="
+echo "Backup completed successfully!"
+echo "Backup Location: $BACKUP_DIR"
+echo "Files Backed Up:"
+ls -1 "$BACKUP_DIR"
+echo "=================================="
