@@ -1,0 +1,48 @@
+name: Test Bash Scripts
+
+on:
+  push:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Check Bash Syntax
+        run: |
+          bash -n disk_usage.sh
+          bash -n system_health.sh
+          bash -n log_analyzer.sh
+
+      - name: Install ShellCheck
+        run: sudo apt-get update && sudo apt-get install -y shellcheck
+
+      - name: Run ShellCheck
+        run: |
+          shellcheck disk_usage.sh
+          shellcheck system_health.sh
+          shellcheck log_analyzer.shname: Bash CI Pipeline
+
+on:
+  push:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check Bash syntax
+        run: |
+          bash -n disk_usage.sh
+          bash -n system_health.sh
+          bash -n log_analyzer.sh
+          bash -n backup.sh
+
+      - name: Run ShellCheck
+        uses: ludeeus/action-shellcheck@master
