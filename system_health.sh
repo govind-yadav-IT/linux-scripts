@@ -11,7 +11,7 @@ echo "--- CPU USAGE ---"
 cpu_idle=$(top -bn1 | grep "Cpu(s)" | awk '{print $8}')
 cpu_usage=$(echo "100 - $cpu_idle" | bc)
 echo "CPU Usage: $cpu_usage%"
-if [ $(echo "$cpu_usage > 80" | bc) -eq 1 ]; then
+if [ "$(echo "$cpu_usage > 80" | bc)" -eq 1 ]; then
     echo "WARNING: CPU above 80%!"
 else
     echo "OK: CPU is normal"
@@ -26,7 +26,7 @@ mem_percent=$(echo "scale=1; $mem_used * 100 / $mem_total" | bc)
 echo "Total Memory: ${mem_total}MB"
 echo "Used Memory: ${mem_used}MB"
 echo "Memory Usage: ${mem_percent}%"
-if [ $(echo "$mem_percent > 80" | bc) -eq 1 ]; then
+if [ "$(echo "$mem_percent > 80" | bc)" -eq 1 ]; then
     echo "WARNING: Memory above 80%!"
 else
     echo "OK: Memory is normal"
