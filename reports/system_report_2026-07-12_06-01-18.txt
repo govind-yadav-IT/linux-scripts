@@ -1,0 +1,95 @@
+========================================
+System Operations Toolkit Report
+Generated: 2026-07-12 06:01:18 UTC
+========================================
+
+===== Disk Usage =====
+Report Generated: Sun Jul 12 06:01:18 UTC 2026
+Disk Usage Report
+_________________
+Filesystem      Size  Used Avail Use% Mounted on
+none            3.7G     0  3.7G   0% /usr/lib/modules/6.6.114.1-microsoft-standard-WSL2
+none            3.7G  4.0K  3.7G   1% /mnt/wsl
+drivers         476G   86G  391G  18% /usr/lib/wsl/drivers
+/dev/sdd       1007G  3.8G  952G   1% /
+none            3.7G   64K  3.7G   1% /mnt/wslg
+none            3.7G     0  3.7G   0% /usr/lib/wsl/lib
+rootfs          3.7G  2.8M  3.7G   1% /init
+none            3.7G  584K  3.7G   1% /run
+none            3.7G     0  3.7G   0% /run/lock
+none            3.7G     0  3.7G   0% /run/shm
+none            3.7G  104K  3.7G   1% /mnt/wslg/versions.txt
+none            3.7G  104K  3.7G   1% /mnt/wslg/doc
+C:\             476G   86G  391G  18% /mnt/c
+
+Checking for partitions above 80%....
+OK: /usr/lib/modules/6.6.114.1-microsoft-standard-WSL2 is at 0%
+OK: /mnt/wsl is at 1%
+OK: /usr/lib/wsl/drivers is at 18%
+OK: / is at 1%
+OK: /mnt/wslg is at 1%
+OK: /usr/lib/wsl/lib is at 0%
+OK: /init is at 1%
+OK: /run is at 1%
+OK: /run/lock is at 0%
+OK: /run/shm is at 0%
+OK: /mnt/wslg/versions.txt is at 1%
+OK: /mnt/wslg/doc is at 1%
+OK: /mnt/c is at 18%
+
+===== System Health =====
+================================
+System Health Report
+Generated: Sun Jul 12 06:01:18 UTC 2026
+================================
+
+--- CPU USAGE ---
+CPU Usage: .8%
+OK: CPU is normal
+
+--- MEMORY USAGE ---
+Total Memory: 7553MB
+Used Memory: 571MB
+Memory Usage: 7.5%
+OK: Memory is normal
+
+--- DISK USAGE ---
+Root Disk Usage: 1%
+OK: Disk is normal
+
+================================
+Health check complete
+================================
+
+===== Log Analysis =====
+================================
+Log Analyzer
+Generated: Sun Jul 12 06:01:18 UTC 2026
+================================
+
+Analyzing: /var/log/syslog
+
+Total lines: 2994
+Error count: 57
+Warning count: 187
+
+--- Last 5 lines ---
+2026-07-12T05:59:51.405622+00:00 Govind wsl-pro-service[2196]: #033[33mWARNING#033[0m Daemon: could not connect to Windows Agent: could not get address: could not read agent port file "/mnt/c/Users/Govind Yadav/.ubuntupro/.address": open /mnt/c/Users/Govind Yadav/.ubuntupro/.address: no such file or directory
+2026-07-12T06:00:04.330917+00:00 Govind CRON[2237]: (govind123) CMD (/home/govind123/Scripts/disk_usage.sh >> /home/govind123/Scripts/disk_report.txt 2>&1)
+2026-07-12T06:00:15.376431+00:00 Govind systemd-resolved[165]: Clock change detected. Flushing caches.
+2026-07-12T06:00:49.057967+00:00 Govind systemd-resolved[165]: Clock change detected. Flushing caches.
+2026-07-12T06:00:54.325040+00:00 Govind wsl-pro-service[2196]: #033[33mWARNING#033[0m Daemon: could not connect to Windows Agent: could not get address: could not read agent port file "/mnt/c/Users/Govind Yadav/.ubuntupro/.address": open /mnt/c/Users/Govind Yadav/.ubuntupro/.address: no such file or directory
+========================================
+SUMMARY
+========================================
+
+Report Generated Successfully
+
+Sections Completed:
+✔ Disk Usage
+✔ System Health
+✔ Log Analysis
+
+Report Location: reports/system_report_2026-07-12_06-01-18.txt
+Execution Time : 0 seconds
+========================================
