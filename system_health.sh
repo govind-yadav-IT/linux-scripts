@@ -8,7 +8,7 @@ echo ""
 
 # CPU Usage
 echo "--- CPU USAGE ---"
-cpu_idle=$(top -bn1 | grep "Cpu(s)" | awk '{print $8}')
+cpu_idle=$(top -bn1 | awk -F',' '/Cpu\(s\)/ {gsub(/ id/,"",$4); print $4}')
 cpu_usage=$(echo "100 - $cpu_idle" | bc)
 echo "CPU Usage: $cpu_usage%"
 if [ "$(echo "$cpu_usage > 80" | bc)" -eq 1 ]; then

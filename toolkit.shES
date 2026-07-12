@@ -1,0 +1,27 @@
+#!/bin/bash
+set -e
+mkdir -p reports
+REPORT_FILE="reports/system_report_$(date +%Y-%m-%d_%H-%M-%S).txt"
+
+echo "========================================" > "$REPORT_FILE"
+echo "System Operations Toolkit Report" >> "$REPORT_FILE"
+echo "Generated: $(date +%Y %M %d %A %B %S %)" >> "$REPORT_FILE"
+echo "========================================" >> "$REPORT_FILE"
+echo "" >> "$REPORT_FILE"
+
+echo "===== Disk Usage =====" >> "$REPORT_FILE"
+./disk_usage.sh >> "$REPORT_FILE"
+
+echo "" >> "$REPORT_FILE"
+
+echo "===== System Health =====" >> "$REPORT_FILE"
+./system_health.sh >> "$REPORT_FILE"
+
+echo "" >> "$REPORT_FILE"
+
+echo "===== Log Analysis =====" >> "$REPORT_FILE"
+./log_analyzer.sh /var/log/syslog >> "$REPORT_FILE"
+echo "========================================"
+echo "Toolkit completed successfully!"
+echo "Report saved to: $REPORT_FILE"
+echo "========================================"
