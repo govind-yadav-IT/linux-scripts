@@ -2,6 +2,7 @@ name: Test Bash Scripts
 
 on:
   push:
+  pull_request:
 
 jobs:
   test:
@@ -11,17 +12,21 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
+      - name: Install ShellCheck
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y shellcheck
+
       - name: Check Bash Syntax
         run: |
           bash -n disk_usage.sh
           bash -n system_health.sh
           bash -n log_analyzer.sh
-
-      - name: Install ShellCheck
-        run: sudo apt-get update && sudo apt-get install -y shellcheck
+          bash -n toolkit.sh
 
       - name: Run ShellCheck
         run: |
           shellcheck disk_usage.sh
           shellcheck system_health.sh
           shellcheck log_analyzer.sh
+          shellcheck toolkit.sh

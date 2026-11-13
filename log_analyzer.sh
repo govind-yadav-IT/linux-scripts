@@ -1,13 +1,12 @@
 #!/bin/bash
 set -e
 
-# Functions
 print_header() {
     echo "================================"
     echo "Log Analyzer"
     echo "Generated: $(date)"
     echo "================================"
-    echo ""
+    echo
 }
 
 check_argument() {
@@ -19,24 +18,29 @@ check_argument() {
 }
 
 analyze_log() {
-    LOG_FILE=$1
+    local LOG_FILE="$1"
 
-    if [ ! -f "$LOG_FILE" ]; then
-        echo "Error: File $LOG_FILE does not exist"
-        exit 1
+    if [ ! -f "$LOG_FILE" ] || [ ! -r "$LOG_FILE" ]; then
+        echo "Error: File does not exist or is not readable: $LOG_FILE" >&2
+        return 1
     fi
 
     echo "Analyzing: $LOG_FILE"
-    echo ""
+    echo
     echo "Total lines: $(wc -l < "$LOG_FILE")"
-    echo "Error count: $(grep -c 'error\|ERROR\|Error' "$LOG_FILE" || echo 0)"
-    echo "Warning count: $(grep -c 'warn\|WARN\|Warning' "$LOG_FILE" || echo 0)"
-    echo ""
+
+    local error_count warning_count
+
+    error_count=$(grep -ci 'error' "$LOG_FILE" || true)
+    warning_count=$(grep -ci 'warn' "$LOG_FILE" || true)
+
+    echo "Error count: $error_count"
+    echo "Warning count: $warning_count"
+    echo
     echo "--- Last 5 lines ---"
     tail -5 "$LOG_FILE"
 }
 
-# Main
 print_header
 check_argument "$@"
 analyze_log "$1"
